@@ -28,7 +28,71 @@
         <link rel="stylesheet" href="assets/css/responsive.css" />
 
         <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <style>
+            .center{
+                width: 300px;
+                height: 300px;
+                text-align: center;
+                display: none;
+                text-align: center;
+            }
+            p,
+            body {
+                margin: 0;
+            }
 
+            .rui-luck-draw {
+                width: 100vw;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+
+            .rui-luck-content {
+                height: 75vw;
+                width: 75vw;
+                max-width: 550px;
+                max-height: 550px
+            }
+
+            .rui-luck-turntable,
+            .rui-luck-pointer {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(0deg);
+                transform-origin: center center;
+                -webkit-transform-origin: center center;
+                -moz-transform-origin: center center;
+                -ms-transform-origin: center center;
+                -o-transform-origin: center center;
+            }
+
+            .rui-luck-name {
+                font-size: 16px;
+                text-align: left;
+                height: 30px;
+                line-height: 30px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 100;
+            }
+
+            .rui-luck-name a {
+                text-decoration: none;
+                color: #777;
+                padding: 0 20px;
+            }
+
+            .rui-luck-pointer {
+                width: 27vw;
+                height: 27vw;
+                max-width: 205px;
+                max-height: 205px
+            }
+        </style>
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse">
@@ -51,7 +115,7 @@
             <!--Home page style-->
 
             <nav class="navbar navbar-default bootsnav navbar-fixed white no-background">
-                <div class="container">  
+                <div class="container">
 
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
@@ -61,7 +125,7 @@
                             <li><a><i class="fa fa-qrcode" style="font-size:19px" title="Star或捐赠后可加入Q群" data-container="body" data-toggle="popover" data-placement="bottom"
                                 data-html="true" data-content="<img src='assets/images/qq-qr.png' width='150'>" data-trigger="hover"></i></a></li>
                         </ul>
-                    </div>        
+                    </div>
                     <!-- End Atribute Navigation -->
 
 
@@ -88,7 +152,7 @@
                             <li><a href="https://github.com/Exrick/xpay" target="_blank">开发教程</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
-                </div>   
+                </div>
           </nav>
 
             <!--Home Sections-->
@@ -149,7 +213,7 @@
                                     </div>
                                     <div class="f_item_text">
                                         <h3>完全免费</h3>
-                                        <p>自动化个人收付款系统，没有中间商赚差价。 
+                                        <p>自动化个人收付款系统，没有中间商赚差价。
                                            不再忍受第三方抽取手续费</p>
                                     </div>
                                 </div>
@@ -161,7 +225,7 @@
                                     </div>
                                     <div class="f_item_text">
                                         <h3>无需任何第三方SDK</h3>
-                                        <p>无需集成任何支付SDK代码，极简自定义开发。 
+                                        <p>无需集成任何支付SDK代码，极简自定义开发。
                                            支持任何业务逻辑回调</p>
                                     </div>
                                 </div>
@@ -173,7 +237,7 @@
                                     </div>
                                     <div class="f_item_text">
                                         <h3>无需签约</h3>
-                                        <p>营业执照？个体工商户？身份证？统统见鬼去吧！ 
+                                        <p>营业执照？个体工商户？身份证？统统见鬼去吧！
                                            一张二维收款码搞定收款</p>
                                     </div>
                                 </div>
@@ -236,7 +300,7 @@
                                         </div>
                                         <h2 class="m-top-40">填写确认订单</h2>
                                         <p class="m-top-20">用户确认购买订单后，需填写邮箱或手机号，发送邮件或短信支付结果通知，
-                                            以便及时告知用户支付结果 
+                                            以便及时告知用户支付结果
                                         </p>
 
                                         <ul class="list-inline m-top-50">
@@ -400,14 +464,14 @@
             <div class="scrollup">
                 <a href="#"><i class="fa fa-chevron-up"></i></a>
             </div><!-- End off scroll up -->
-            
-            
+
+
             <footer id="footer" class="footer bg-black">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <nav class="navbar navbar-default bootsnav footer-menu no-background">
-                                <div class="container">  
+                                <div class="container">
 
                                     <!-- Start Atribute Navigation -->
                                     <div class="attr-nav">
@@ -452,7 +516,7 @@
                                             <li><a href="https://github.com/Exrick/xpay" target="_blank">开发教程</a></li>
                                         </ul>
                                     </div><!-- /.navbar-collapse -->
-                                </div>   
+                                </div>
                             </nav>
                         </div>
                         <div class="divider"></div>
@@ -465,6 +529,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="center">
+                    <div class="rui-luck-content">
+                        <div class="rui-luck-box">
+                            <img id="luckTurntable" src="/images/turntable.png" alt="" class="rui-luck-content rui-luck-turntable">
+                            <img id="luckPointer" onclick="startRotate(this)" src="/images/pointer.png" class="rui-luck-pointer" />
+                        </div>
+                    </div>
+                </div>
+                <input type='button' value='try' class='btn'>
+                <script type="text/javascript" src='/js/jquery-1.8.3.min.js'></script>
+                <script type="text/javascript" src='/js/mask-layer.js'></script>
+                <script type="text/javascript" src='/js/test.js'></script>
             </footer>
 
 
@@ -485,6 +561,8 @@
 
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="/js/luckDraw.js"></script>
+
         <script>
             var _hmt = _hmt || [];
             (function() {
@@ -493,10 +571,29 @@
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(hm, s);
             })();
+            // 转盘旋转，从左向右逆时针计算奖品
+            var luckArr = ['100减99优惠券', '谢谢参与', '39减10优惠券', '谢谢参与', '59减15优惠券', '谢谢参与'];
+            var luck = new LuckDraw();
+            var startRotate = function (elem) {
+                luck._init({
+                    rotateId: '#luckTurntable',
+                    luckNumber: Math.floor(Math.random() * (5 - 0) + 0),
+                    typeNumber: 6,
+                    time: 2000,
+                    type: 'turntable',
+                    circleNumber: 10,
+                    success: function (res) {
+                        console.log(res.luckNumber);
+                        console.log(luckArr[res.luckNumber]);
+                        alert(luckArr[res.luckNumber]);
+                    }
+                });
+            }
         </script>
 
     </body>
     <script>
         $("[data-toggle='popover']").popover();
     </script>
+
 </html>

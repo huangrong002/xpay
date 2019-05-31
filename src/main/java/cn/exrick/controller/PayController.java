@@ -146,9 +146,8 @@ public class PayController {
     @ResponseBody
     public Result<Object> addPay(@ModelAttribute Pay pay, HttpServletRequest request){
 
-        if(StringUtils.isBlank(pay.getNickName())||StringUtils.isBlank(String.valueOf(pay.getMoney()))
-                ||StringUtils.isBlank(pay.getEmail())||!EmailUtils.checkEmail(pay.getEmail())){
-            return new ResultUtil<Object>().setErrorMsg("请填写完整信息和正确的通知邮箱");
+        if(StringUtils.isBlank(pay.getNickName())||StringUtils.isBlank(String.valueOf(pay.getMoney()))){
+            return new ResultUtil<Object>().setErrorMsg("请填写完整信息");
         }
         //防炸库验证
         String ip= IpInfoUtils.getIpAddr(request);
@@ -157,7 +156,7 @@ public class PayController {
         }
         String temp=redisUtils.get(ip);
         if(StringUtils.isNotBlank(temp)){
-            return new ResultUtil<Object>().setErrorMsg("您提交的太频繁啦，作者的学生服务器要炸啦！请2分钟后再试");
+            return new ResultUtil<Object>().setErrorMsg("您提交的太频繁啦！请2分钟后再试");
         }
         try {
             payService.addPay(pay);
